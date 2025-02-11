@@ -4,11 +4,11 @@
 DIR=$(pwd)
 rm $DIR/local_packages/sonarr*.deb
 mkdir -p $DIR/sonarr_amd64/opt
-wget --content-disposition "https://services.sonarr.tv/v1/download/main/latest?version=4&os=linux&arch=x64"
+wget --content-disposition "https://services.sonarr.tv/v1/download/develop/latest?version=4&os=linux&arch=x64"
 sonarr=$(find ./Sonarr*  -name '*.tar.gz'|grep -Eo '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+')
-tar xfz Sonarr.main.*.linux-x64.tar.gz -C $DIR/sonarr_amd64/opt
+tar xfz Sonarr.develop.*.linux-x64.tar.gz -C $DIR/sonarr_amd64/opt
 ##sonarr=$(awk -F= '/ReleaseVersion=/{print $2; exit}' $DIR/sonarr_amd64/opt/Sonarr/release_info)
-rm Sonarr.main.*.linux-x64.tar.gz 
+rm Sonarr.develop.*.linux-x64.tar.gz 
 cp $DIR/templates/sonarr/. $DIR/sonarr_amd64/ -r
 sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: ${sonarr}/" $DIR/sonarr_amd64/DEBIAN/control
 chmod 775 $DIR/sonarr_amd64/DEBIAN
@@ -136,11 +136,11 @@ tar xvf sabnzbd.tar.gz -C $DIR/sabnzbd_amd64/opt
 mv $DIR/sabnzbd_amd64/opt/SABnzbd* $DIR/sabnzbd_amd64/opt/sabnzbd
 cd $DIR
 rm $DIR/sabnzbd_amd64/tmp -r
+chown -R media: $DIR/sabnzbd_amd64/opt
 cp $DIR/templates/sabnzbd/. $DIR/sabnzbd_amd64/ -r
-chown -R media: $DIR/sabnzbd_amd64/home $DIR/sabnzbd_amd64/opt
 chmod 775 $DIR/sabnzbd_amd64/DEBIAN
-dpkg-deb -b sabnzbd_amd64/ sabnzbd_4.1.0-amd64.deb
-mv $DIR/sabnzbd_4.1.0-amd64.deb $DIR/local_packages 
+dpkg-deb -b sabnzbd_amd64/ sabnzbd_4.4.1-amd64.deb
+mv $DIR/sabnzbd_4.4.1-amd64.deb $DIR/local_packages 
 rm sabnzbd_amd64/ -r
 
 ##Adding tailscale to local packages 

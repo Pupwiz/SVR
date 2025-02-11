@@ -76,5 +76,5 @@ else
 fi
 `find $(pwd)/templates/ -type f -print0 | xargs -0 dos2unix -q --`
 echo "Starting ISO build with custom install files..!"  
-build-simple-cdd --conf sda.media.conf --debian-mirror http://localhost:9999/debian/ --logfile buildlog$(date +%F_%H-%M-%p).log
+build-simple-cdd --conf sda.media.conf --logfile buildlog$(date +%F_%H-%M-%p).log
 echo "Build complete, see images folder for ISO..!"  

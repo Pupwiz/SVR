@@ -1,0 +1,14 @@
+{
+    "books": {
+        "save_path": "/home/media/downloads/readarr"
+    },
+    "movie": {
+        "save_path": "/home/media/downloads/radarr"
+    },
+    "music": {
+        "save_path": "/home/media/downloads/lidarr"
+    },
+    "tv": {
+        "save_path": "/home/media/downloads/sonarr"
+    }
+}
