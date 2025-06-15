@@ -18,6 +18,7 @@ xinit \
 mousepad \
 bleachbit \
 timeshift \
+chromium \
 xrdp \
 linux-headers-$(uname -r)
 sudo systemctl set-default multi-user.target
