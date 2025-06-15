@@ -15,4 +15,5 @@ network-manager-openvpn \
 network-manager-gnome \
 network-manager-openvpn-gnome \
 xinit \
+mousepad \
 xrdp
