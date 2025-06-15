@@ -19,3 +19,4 @@ mousepad \
 bleachbit \
 timeshift \
 xrdp
+sudo systemctl set-default multi-user.target
