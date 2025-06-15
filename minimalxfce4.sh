@@ -22,6 +22,7 @@ chromium \
 xrdp \
 udisks2-lvm2 \
 udisks2-btrfs \
+pcp-zeroconf \
 dkms \
 cockpit \
 cockpit-storaged \
