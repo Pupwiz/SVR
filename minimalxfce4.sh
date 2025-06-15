@@ -16,4 +16,6 @@ network-manager-gnome \
 network-manager-openvpn-gnome \
 xinit \
 mousepad \
+bleachbit \
+timeshift \
 xrdp
