@@ -20,5 +20,11 @@ bleachbit \
 timeshift \
 chromium \
 xrdp \
+udisks2-lvm2 \
+udisks2-btrfs \
+dkms \
+cockpit \
+cockpit-storaged \
+cockpit-podman \
 linux-headers-$(uname -r)
 sudo systemctl set-default multi-user.target
