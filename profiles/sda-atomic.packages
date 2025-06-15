@@ -78,7 +78,6 @@ avahi-discover
 avahi-utils
 libnss-mdns
 mdns-scan
-wsdd
 qbittorrent-nox
 jq
 dnsutils
@@ -112,10 +111,10 @@ xfwm4
 network-manager-openvpn
 network-manager-gnome
 network-manager-openvpn-gnome
-gedit
+mousepad
 cockpit
 cockpit-storaged
-cockpit-navigator
+cockpit-podman
 cockpit-networkmanager
 cockpit-packagekit
 xinit
@@ -127,7 +126,6 @@ readarr
 lidarr
 unpackerr
 emby-server
-flaresolverr
 p7zip-full
 par2
 unrar
