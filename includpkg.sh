@@ -101,15 +101,15 @@ current=$(github_latest_version MediaBrowser/Emby.Releases)
 wget -P $DIR/local_packages/  https://github.com/MediaBrowser/Emby.Releases/releases/download/${current}/emby-server-deb_${current}_${os_arch}.deb 
 
 ## adding byparr for Prowlarr
-
+DIR=$(pwd)
 rm $DIR/local_packages/byparr*.deb
 mkdir -p $DIR/byparr_amd64/opt
 cd $DIR/byparr_amd64/opt
-flare_type=linux_x64
-byparr=$(curl -s https://api.github.com/repos/byparr/byparr/releases/latest | jq -r ".assets[] | select(.name | test(\"${flare_type}\")) | .browser_download_url")
-wget $byparr
-tar xvf byparr_linux*.tar.gz
-rm byparr_linux*.tar.gz
+TAG=$(curl -sS https://api.github.com/repos/ThePhaseless/Byparr/releases/latest | jq -r '.tag_name')
+# Download the Release Asset:
+curl -OL "https://github.com/ThePhaseless/Byparr/archive/refs/tags/$TAG.tar.gz"
+tar xvf $TAG.tar.gz
+rm $TAG.tar.gz
 version=$(cat ./byparr/package.json | grep '"version"' | head -n 1 | awk '{print $2}' | sed 's/"//g; s/,//g')
 cp $DIR/templates/byparr/. $DIR/byparr_amd64/ -r
 sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: ${version}/" $DIR/byparr_amd64/DEBIAN/control 
