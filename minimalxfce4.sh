@@ -27,5 +27,9 @@ dkms \
 cockpit \
 cockpit-storaged \
 cockpit-podman \
+gettext \
+nodejs \
+npm \ 
+make \
 linux-headers-$(uname -r)
 sudo systemctl set-default multi-user.target
