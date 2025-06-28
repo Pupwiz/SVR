@@ -100,23 +100,6 @@ os_arch=$(dpkg --print-architecture)
 current=$(github_latest_version MediaBrowser/Emby.Releases)
 wget -P $DIR/local_packages/  https://github.com/MediaBrowser/Emby.Releases/releases/download/${current}/emby-server-deb_${current}_${os_arch}.deb 
 
-## adding byparr for Prowlarr
-DIR=$(pwd)
-rm $DIR/local_packages/byparr*.deb
-mkdir -p $DIR/byparr_amd64/opt
-cd $DIR/byparr_amd64/opt
-TAG=$(curl -sS https://api.github.com/repos/ThePhaseless/Byparr/releases/latest | jq -r '.tag_name')
-# Download the Release Asset:
-curl -OL "https://github.com/ThePhaseless/Byparr/archive/refs/tags/$TAG.tar.gz"
-tar xvf $TAG.tar.gz
-rm $TAG.tar.gz
-chown -R media: $DIR/byparr_amd64/opt
-chmod 775 $DIR/byparr_amd64/DEBIAN
-cd $DIR
-dpkg-deb -b byparr_amd64 byparrr_${version}-amd64.deb
-mv byparr_${version}-amd64.deb $DIR/local_packages 
-rm byparr_amd64/ -r
-
 ##Adding sabnzbd to local pacakages
 
 DIR=$(pwd)
@@ -157,6 +140,12 @@ rm $DIR/local_packages/boxtools*.deb
 mkdir -p $DIR/boxtools_amd64/opt
 cd $DIR/boxtools_amd64/opt
 git clone https://github.com/mdhiggins/sickbeard_mp4_automator.git mp4auto
+TAG=$(curl -sS https://api.github.com/repos/ThePhaseless/Byparr/releases/latest | jq -r '.tag_name')
+# Download the Release Asset:
+curl -OL "https://github.com/ThePhaseless/Byparr/archive/refs/tags/$TAG.tar.gz"
+tar xvf $TAG.tar.gz
+rm $TAG.tar.gz
+mv Byparr-* Byparr
 cd $DIR
 cp $DIR/templates/boxtools/* $DIR/boxtools_amd64 -rf
 chmod 775 $DIR/boxtools_amd64/DEBIAN
