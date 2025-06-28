@@ -32,6 +32,7 @@ d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
 d-i partman/mount_style select uuid
 d-i base-installer/install-recommends boolean false
+d-i apt-setup/services-select multiselect security, updates, backports
 d-i apt-setup/cdrom/set-first boolean false
 d-i apt-setup/non-free-firmware boolean true
 d-i apt-setup/non-free boolean true
