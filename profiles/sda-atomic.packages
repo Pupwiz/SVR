@@ -126,6 +126,10 @@ cockpit-storaged
 cockpit-podman
 cockpit-networkmanager
 cockpit-packagekit
+gettext
+nodejs
+npm 
+make 
 xinit
 wireguard
 sonarr
