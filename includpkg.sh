@@ -100,25 +100,25 @@ os_arch=$(dpkg --print-architecture)
 current=$(github_latest_version MediaBrowser/Emby.Releases)
 wget -P $DIR/local_packages/  https://github.com/MediaBrowser/Emby.Releases/releases/download/${current}/emby-server-deb_${current}_${os_arch}.deb 
 
-## adding FlareSolverr for Prowlarr
+## adding byparr for Prowlarr
 
-rm $DIR/local_packages/flaresolverr*.deb
-mkdir -p $DIR/flaresolverr_amd64/opt
-cd $DIR/flaresolverr_amd64/opt
+rm $DIR/local_packages/byparr*.deb
+mkdir -p $DIR/byparr_amd64/opt
+cd $DIR/byparr_amd64/opt
 flare_type=linux_x64
-solverr=$(curl -s https://api.github.com/repos/FlareSolverr/FlareSolverr/releases/latest | jq -r ".assets[] | select(.name | test(\"${flare_type}\")) | .browser_download_url")
-wget $solverr
-tar xvf flaresolverr_linux*.tar.gz
-rm flaresolverr_linux*.tar.gz
-version=$(cat ./flaresolverr/package.json | grep '"version"' | head -n 1 | awk '{print $2}' | sed 's/"//g; s/,//g')
-cp $DIR/templates/flaresolverr/. $DIR/flaresolverr_amd64/ -r
-sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: ${version}/" $DIR/flaresolverr_amd64/DEBIAN/control 
-chown -R media: $DIR/flaresolverr_amd64/opt
-chmod 775 $DIR/flaresolverr_amd64/DEBIAN
+byparr=$(curl -s https://api.github.com/repos/byparr/byparr/releases/latest | jq -r ".assets[] | select(.name | test(\"${flare_type}\")) | .browser_download_url")
+wget $byparr
+tar xvf byparr_linux*.tar.gz
+rm byparr_linux*.tar.gz
+version=$(cat ./byparr/package.json | grep '"version"' | head -n 1 | awk '{print $2}' | sed 's/"//g; s/,//g')
+cp $DIR/templates/byparr/. $DIR/byparr_amd64/ -r
+sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: ${version}/" $DIR/byparr_amd64/DEBIAN/control 
+chown -R media: $DIR/byparr_amd64/opt
+chmod 775 $DIR/byparr_amd64/DEBIAN
 cd $DIR
-dpkg-deb -b flaresolverr_amd64 flaresolverr_${version}-amd64.deb
-mv flaresolverr_${version}-amd64.deb $DIR/local_packages 
-rm flaresolverr_amd64/ -r
+dpkg-deb -b byparr_amd64 byparrr_${version}-amd64.deb
+mv byparr_${version}-amd64.deb $DIR/local_packages 
+rm byparr_amd64/ -r
 
 ##Adding sabnzbd to local pacakages
 
