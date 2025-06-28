@@ -4,17 +4,11 @@ sudo usermod -s /bin/bash emby
 sudo usermod -a -G media emby
 sudo usermod -a -G emby media
 systemctl enable emby-server
-pip install bottle --break-system-packages || exit 1
-pip install swig --break-system-packages || exit 1
-pip install -r /opt/mp4auto/setup/requirements.txt --break-system-packages || exit 1
 echo "Getting Things Ready Please Wait..!" | wall -n
 echo "Installer adding final programs..!" | wall -n
 chown media: -R /opt/mp4auto || exit 1
+chown media: -R /opt/Byparr || exit 1
 echo "Installing Sickbeard MP4 automation..!"  | wall -n
-pip install -r /opt/mp4auto/setup/requirements.txt --break-system-packages || exit 1
-chown media: -R /opt/mp4auto || exit 1
-echo "Installing Flaresolverr requirements"
-pip install -r /opt/requirements.txt --break-system-packages || exit 1
 echo "System will reboot one last time for final updates install..!"  | wall -n
 echo "Updates and software not required to make the system run will "  | wall -n
 echo "now be removed please wait for the reboot. Dont force the system off..!"  | wall -n
