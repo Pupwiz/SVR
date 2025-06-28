@@ -83,7 +83,7 @@ mv lidarr_$VER-amd64.deb ./local_packages
 rm $DIR/lidarr_amd64/ -r
 
 ##adding Unpackerr
-
+DIR=$(pwd)
 rm $DIR/local_packages/unpackerr*.deb
 type=amd64.deb
 unpackerrlatest=$(curl -s https://api.github.com/repos/Unpackerr/unpackerr/releases/latest | jq -r ".assets[] | select(.name | test(\"${type}\")) | .browser_download_url")
