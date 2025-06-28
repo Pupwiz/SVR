@@ -110,9 +110,6 @@ TAG=$(curl -sS https://api.github.com/repos/ThePhaseless/Byparr/releases/latest 
 curl -OL "https://github.com/ThePhaseless/Byparr/archive/refs/tags/$TAG.tar.gz"
 tar xvf $TAG.tar.gz
 rm $TAG.tar.gz
-version=$(cat ./byparr/package.json | grep '"version"' | head -n 1 | awk '{print $2}' | sed 's/"//g; s/,//g')
-cp $DIR/templates/byparr/. $DIR/byparr_amd64/ -r
-sed -i.bak "/^[[:space:]]*Version:/ s/:.*/: ${version}/" $DIR/byparr_amd64/DEBIAN/control 
 chown -R media: $DIR/byparr_amd64/opt
 chmod 775 $DIR/byparr_amd64/DEBIAN
 cd $DIR
